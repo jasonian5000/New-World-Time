@@ -1,9 +1,12 @@
+import TimesDisplay from "./components/TimesDisplay";
+import TimeSelectForm from "./components/TimeSelectForm";
 
 
 function App() {
   return (
     <div className="App">
-      <h3>New World Time</h3>
+      <TimeSelectForm/>
+      <TimesDisplay/>
     </div>
   );
 }
