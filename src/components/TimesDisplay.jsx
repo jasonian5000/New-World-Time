@@ -11,9 +11,9 @@ export default function TimesDisplay(props) {
         <div className="day_column">
           <h3>Next Day Start</h3>
           {timesList.map((times) => (
-            <p key={times.dayStart.currentHour}>
-              {times.dayStart.currentHour}:
-              {times.dayStart.currentMinute.toLocaleString("en-US", {
+            <p key={times.dayStart.hour}>
+              {times.dayStart.hour}:
+              {times.dayStart.minute.toLocaleString("en-US", {
                 minimumIntegerDigits: 2,
               })}
             </p>
@@ -22,7 +22,12 @@ export default function TimesDisplay(props) {
         <div className="night_column">
           <h3>Next Night Start</h3>
           {timesList.map((times) => (
-            <p key={times.nightStart}>{times.nightStart}</p>
+            <p key={times.nightStart.hour}>
+              {times.nightStart.hour}:
+              {times.nightStart.minute.toLocaleString("en-US", {
+                minimumIntegerDigits: 2,
+              })}
+            </p>
           ))}
         </div>
       </div>

@@ -14,10 +14,11 @@ export const populateTimesDisplay = (hour, minute) => {
       currentHour -= 12;
     }
     state.push({
-      dayStart: {currentHour: currentHour, currentMinute: currentMinute},
-      nightStart: `${(currentHour === 12) ? 1 : currentHour + 1}:${currentMinute.toLocaleString("en-US", {
-        minimumIntegerDigits: 2
-      })}`,
+      dayStart: { hour: currentHour, minute: currentMinute },
+      nightStart: {
+        hour: currentHour === 12 ? 1 : currentHour + 1,
+        minute: currentMinute,
+      },
     });
   }
   return state;

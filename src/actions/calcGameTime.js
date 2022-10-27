@@ -3,39 +3,88 @@
 
 let timesList = [
   {
-    dayStart: "3:34",
-    nightStart: "4:34",
+    dayStart: {
+      hour: 6,
+      minute: 44,
+    },
+    nightStart: {
+      hour: 7,
+      minute: 44,
+    },
   },
   {
-    dayStart: "5:04",
-    nightStart: "6:04",
+    dayStart: {
+      hour: 8,
+      minute: 14,
+    },
+    nightStart: {
+      hour: 9,
+      minute: 14,
+    },
   },
   {
-    dayStart: "6:34",
-    nightStart: "7:34",
+    dayStart: {
+      hour: 9,
+      minute: 44,
+    },
+    nightStart: {
+      hour: 10,
+      minute: 44,
+    },
   },
   {
-    dayStart: "8:04",
-    nightStart: "9:04",
+    dayStart: {
+      hour: 11,
+      minute: 14,
+    },
+    nightStart: {
+      hour: 12,
+      minute: 14,
+    },
   },
   {
-    dayStart: "9:34",
-    nightStart: "10:34",
+    dayStart: {
+      hour: 12,
+      minute: 44,
+    },
+    nightStart: {
+      hour: 1,
+      minute: 44,
+    },
   },
   {
-    dayStart: "11:04",
-    nightStart: "12:04",
+    dayStart: {
+      hour: 2,
+      minute: 14,
+    },
+    nightStart: {
+      hour: 3,
+      minute: 14,
+    },
   },
   {
-    dayStart: "12:34",
-    nightStart: "1:34",
+    dayStart: {
+      hour: 3,
+      minute: 44,
+    },
+    nightStart: {
+      hour: 4,
+      minute: 44,
+    },
   },
   {
-    dayStart: "2:04",
-    nightStart: "3:04",
+    dayStart: {
+      hour: 5,
+      minute: 14,
+    },
+    nightStart: {
+      hour: 6,
+      minute: 14,
+    },
   },
 ];
-
+let currentHour = 6
+let currentMinute = 32
 export const calcGameTime = (currentHour, currentMinute, timesList) => {
-    
+
 }
