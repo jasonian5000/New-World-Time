@@ -2,7 +2,7 @@ export const populateTimesDisplay = (hour, minute) => {
   let state = [];
   let currentHour = Number(hour);
   let currentMinute = Number(minute);
-  for (let index = 0; index < 7; index++) {
+  for (let index = 0; index < 8; index++) {
     if (currentMinute < 30) {
       currentHour += 1;
       currentMinute += 30;

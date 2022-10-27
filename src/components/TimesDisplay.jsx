@@ -2,8 +2,8 @@ import React from "react";
 import { populateTimesDisplay } from "../actions/populateTimesDisplay";
 import "../css/TimesDisplay.css"
 
-export default function TimesDisplay() {
-  let timesList = populateTimesDisplay("3", "09");
+export default function TimesDisplay(props) {
+  let timesList = populateTimesDisplay(props.hourInput, props.minuteInput);
   return (
     <div className="display_wrapper">
       <div className="display_columns">

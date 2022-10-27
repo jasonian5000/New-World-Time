@@ -1,12 +1,10 @@
-import TimesDisplay from "./components/TimesDisplay";
-import TimeSelectForm from "./components/TimeSelectForm";
 import "../src/css/App.css"
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
     <div className="App">
-      <TimeSelectForm/>
-      <TimesDisplay/>
+      <Homepage/>
     </div>
   );
 }

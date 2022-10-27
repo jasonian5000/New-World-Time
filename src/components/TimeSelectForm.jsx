@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { makeDropDown } from "../actions/makeDropDown";
 
-export default function TimeSelectForm() {
+export default function TimeSelectForm(props) {
   const hourList = makeDropDown(1, 12);
   const minuteList = makeDropDown(0, 60);
-  const [hourInput, setHourInput] = useState('12')
-  const [minuteInput, setMinuteInput] = useState('00')
+  
   return (
     <div>
         <h1>New World Clock</h1>
@@ -13,8 +11,8 @@ export default function TimeSelectForm() {
       <form>
         <select
           name="hour"
-          value={hourInput}
-          onChange={(e) => setHourInput(e.target.value)}
+          value={props.hourInput}
+          onChange={(e) => props.setHourInput(e.target.value)}
         >
           {hourList.map((hour) => (
             <option value={hour.value} key={hour.value}>{hour.value}</option>
@@ -22,8 +20,8 @@ export default function TimeSelectForm() {
         </select>
         <select
           name="minute"
-          value={minuteInput}
-          onChange={(e) => setMinuteInput(e.target.value)}
+          value={props.minuteInput}
+          onChange={(e) => props.setMinuteInput(e.target.value)}
         >
           {minuteList.map((minute) => (
             <option
