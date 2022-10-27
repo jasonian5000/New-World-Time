@@ -1,0 +1,13 @@
+.display_wrapper {
+    width: 100vw;
+    display: flex;
+    align-content: center;
+}
+
+.display_columns {
+    display: flex;
+}
+
+.day_column, .night_column {
+    width: 50vw;
+}

@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.7px;
+  background-color: rgb(44, 44, 44);
+  color: #cdd0d3;
+  text-align: center;
+}

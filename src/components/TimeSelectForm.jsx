@@ -6,9 +6,10 @@ export default function TimeSelectForm() {
   const minuteList = makeDropDown(0, 60);
   const [hourInput, setHourInput] = useState('12')
   const [minuteInput, setMinuteInput] = useState('00')
-  const [dayNightInput, setDayNightInput] = useState('AM')
   return (
     <div>
+        <h1>New World Clock</h1>
+        <h2>Select Day Start Time</h2>
       <form>
         <select
           name="hour"
@@ -16,7 +17,7 @@ export default function TimeSelectForm() {
           onChange={(e) => setHourInput(e.target.value)}
         >
           {hourList.map((hour) => (
-            <option value={hour.value}>{hour.value}</option>
+            <option value={hour.value} key={hour.value}>{hour.value}</option>
           ))}
         </select>
         <select
@@ -27,20 +28,15 @@ export default function TimeSelectForm() {
           {minuteList.map((minute) => (
             <option
               value={minute.value.toLocaleString("en-US", {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
+                minimumIntegerDigits: 2
               })}
+              key={minute.value}
             >
               {minute.value.toLocaleString("en-US", {
-                minimumIntegerDigits: 2,
-                useGrouping: false,
+                minimumIntegerDigits: 2
               })}
             </option>
           ))}
-        </select>
-        <select name="am-pm" value={dayNightInput} onChange={e => setDayNightInput(e.target.value)}>
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
         </select>
       </form>
     </div>
