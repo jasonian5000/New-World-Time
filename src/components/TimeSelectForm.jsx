@@ -12,7 +12,7 @@ export default function TimeSelectForm(props) {
         <select
           name="hour"
           value={props.hourInput}
-          onChange={(e) => props.setHourInput(e.target.value)}
+          onChange={(e) => {props.setHourInput(e.target.value); localStorage.setItem("hour", e.target.value)}}
         >
           {hourList.map((hour) => (
             <option value={hour.value} key={hour.value}>{hour.value}</option>
@@ -21,7 +21,7 @@ export default function TimeSelectForm(props) {
         <select
           name="minute"
           value={props.minuteInput}
-          onChange={(e) => props.setMinuteInput(e.target.value)}
+          onChange={(e) => {props.setMinuteInput(e.target.value); localStorage.setItem("minute", e.target.value)}}
         >
           {minuteList.map((minute) => (
             <option
