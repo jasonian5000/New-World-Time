@@ -5,96 +5,96 @@ let timesList = [
   {
     dayStart: {
       hour: 6,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
     nightStart: {
       hour: 7,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
   },
   {
     dayStart: {
-      hour: 7,
-      minute: 45,
+      hour: 8,
+      minute: 0,
       second: 0,
     },
     nightStart: {
-      hour: 8,
-      minute: 45,
+      hour: 9,
+      minute: 0,
       second: 0,
     },
   },
   {
     dayStart: {
       hour: 9,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
     nightStart: {
       hour: 10,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
   },
   {
     dayStart: {
-      hour: 10,
-      minute: 45,
+      hour: 11,
+      minute: 0,
       second: 0,
     },
     nightStart: {
-      hour: 11,
-      minute: 45,
+      hour: 12,
+      minute: 0,
       second: 0,
     },
   },
   {
     dayStart: {
       hour: 12,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
     nightStart: {
       hour: 1,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
   },
   {
     dayStart: {
-      hour: 1,
-      minute: 45,
+      hour: 2,
+      minute: 0,
       second: 0,
     },
     nightStart: {
-      hour: 2,
-      minute: 45,
+      hour: 3,
+      minute: 0,
       second: 0,
     },
   },
   {
     dayStart: {
       hour: 3,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
     nightStart: {
       hour: 4,
-      minute: 15,
+      minute: 30,
       second: 0,
     },
   },
   {
     dayStart: {
-      hour: 4,
-      minute: 45,
+      hour: 5,
+      minute: 0,
       second: 0,
     },
     nightStart: {
-      hour: 5,
-      minute: 45,
+      hour: 6,
+      minute: 0,
       second: 0,
     },
   },
@@ -135,19 +135,24 @@ const findDayStartFloor = (timesList) => {
 const calcGameTime = (timesList) => {
   let { start, current } = findDayStartFloor(timesList);
   let diffSeconds = 0;
-  //1800 sec in 30 min
-  //3600 sec in 60 min
-  // 5400 sec in 90 min
+  if (start.hour === current.hour) {
+    diffSeconds +=
+      (current.minute - start.minute) * 60 + (current.second - start.second);
+  }
   if (start.hour < current.hour) {
     diffSeconds +=
-      (60 - start.minute) * 60 +
+      (59 - start.minute) * 60 +
       current.minute * 60 +
       (60 - start.second + current.second);
   }
-
+  if (current.hour - start.hour === 2) {
+    diffSeconds += 60 * 60;
+  }
   console.log("current: ", current);
   console.log("start: ", start);
   console.log("difference: ", diffSeconds);
+  console.log('minutes: ', Math.floor(diffSeconds/60))
+  console.log('seconds: ', diffSeconds%60)
 };
 
 calcGameTime(timesList);
