@@ -84,26 +84,43 @@ let timesList = [
   },
 ];
 
-const calcGameTime = (timesList) => {
-  let dt = new Date();
-  let currentHour = dt.getHours();
+const findDayStartFloor = (timesList) => {
+  let now = new Date();
+  let currentHour = now.getHours();
   if (currentHour > 12) {
     currentHour -= 12;
   }
-  let currentMinute = dt.getMinutes();
-  let start = {}
+  let currentMinute = now.getMinutes();
+  let start = {};
   for (let index = 0; index < timesList.length; index++) {
-    if (timesList[index].dayStart.hour === currentHour && timesList[index].dayStart.minute <= currentMinute) {
-        start = timesList[index].dayStart
-        break
+    if (
+      timesList[index].dayStart.hour === currentHour &&
+      timesList[index].dayStart.minute <= currentMinute
+    ) {
+      start = timesList[index].dayStart;
+      break;
     }
-    if (timesList[index].dayStart.hour > currentHour && timesList[index-1].dayStart.hour < currentHour) {
-        start = timesList[index].dayStart
-        console.log(index)
-        break
+    if (timesList[index - 1]) {
+      if (
+        timesList[index].dayStart.hour > currentHour &&
+        timesList[index - 1].dayStart.hour < currentHour
+      ) {
+        start = timesList[index - 1].dayStart;
+        console.log(index);
+        break;
+      }
     }
+    start = timesList[index].dayStart
   }
-  console.log(start)
+  return start
 };
+
+const calcGameTime = (timesList) => {
+    let dayStart = findDayStartFloor(timesList)
+    let startHour = dayStart.hour
+    let startMinute = dayStart.minute
+    
+    console.log(dayStart)
+}
 
 calcGameTime(timesList);
