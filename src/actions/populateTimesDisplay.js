@@ -1,4 +1,4 @@
-export const populateTimesDisplay = (hour, minute) => {
+export const populateTimesDisplay = (hour, minute, second) => {
   let state = [];
   let currentHour = Number(hour);
   let currentMinute = Number(minute);
@@ -14,10 +14,10 @@ export const populateTimesDisplay = (hour, minute) => {
       currentHour -= 12;
     }
     state.push({
-      dayStart: { hour: currentHour, minute: currentMinute },
+      dayStart: { hour: currentHour, minute: currentMinute, second: second },
       nightStart: {
         hour: currentHour === 12 ? 1 : currentHour + 1,
-        minute: currentMinute,
+        minute: currentMinute, second: second,
       },
     });
   }

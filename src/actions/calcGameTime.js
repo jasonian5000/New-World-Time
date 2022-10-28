@@ -5,141 +5,149 @@ let timesList = [
   {
     dayStart: {
       hour: 6,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
     nightStart: {
       hour: 7,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
   },
   {
     dayStart: {
-      hour: 8,
-      minute: 14,
-      second: 00,
+      hour: 7,
+      minute: 45,
+      second: 0,
     },
     nightStart: {
-      hour: 9,
-      minute: 14,
-      second: 00,
+      hour: 8,
+      minute: 45,
+      second: 0,
     },
   },
   {
     dayStart: {
       hour: 9,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
     nightStart: {
       hour: 10,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
   },
   {
     dayStart: {
-      hour: 11,
-      minute: 14,
-      second: 00,
+      hour: 10,
+      minute: 45,
+      second: 0,
     },
     nightStart: {
-      hour: 12,
-      minute: 14,
-      second: 00,
+      hour: 11,
+      minute: 45,
+      second: 0,
     },
   },
   {
     dayStart: {
       hour: 12,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
     nightStart: {
       hour: 1,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
   },
   {
     dayStart: {
-      hour: 2,
-      minute: 14,
-      second: 00,
+      hour: 1,
+      minute: 45,
+      second: 0,
     },
     nightStart: {
-      hour: 3,
-      minute: 14,
-      second: 00,
+      hour: 2,
+      minute: 45,
+      second: 0,
     },
   },
   {
     dayStart: {
       hour: 3,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
     nightStart: {
       hour: 4,
-      minute: 44,
-      second: 00,
+      minute: 15,
+      second: 0,
     },
   },
   {
     dayStart: {
-      hour: 5,
-      minute: 14,
-      second: 00,
+      hour: 4,
+      minute: 45,
+      second: 0,
     },
     nightStart: {
-      hour: 6,
-      minute: 14,
-      second: 00,
+      hour: 5,
+      minute: 45,
+      second: 0,
     },
   },
 ];
 
 const findDayStartFloor = (timesList) => {
   let now = new Date();
-  let currentHour = now.getHours();
-  if (currentHour > 12) {
-    currentHour -= 12;
+  let current = {
+    hour: now.getHours(),
+    minute: now.getMinutes(),
+    second: now.getSeconds(),
+  };
+  if (current.hour > 12) {
+    current.hour -= 12;
   }
-  let currentMinute = now.getMinutes();
-  let currentSecond = now.getSeconds()
   let start = {};
   for (let index = 0; index < timesList.length; index++) {
-    if (
-      timesList[index].dayStart.hour === currentHour &&
-      timesList[index].dayStart.minute <= currentMinute
-    ) {
-      start = timesList[index].dayStart;
+    let time = timesList[index].dayStart;
+    let prev = timesList[index - 1]?.dayStart;
+    if (time.hour === current.hour && time.minute <= current.minute) {
+      start = time;
       break;
     }
-    if (timesList[index - 1]) {
+    if (prev) {
       if (
-        timesList[index].dayStart.hour > currentHour &&
-        timesList[index - 1].dayStart.hour < currentHour
+        (time.hour > current.hour && prev.hour < current.hour) ||
+        (time.hour === current.hour && time.minute > current.minute)
       ) {
-        start = timesList[index - 1].dayStart;
-        console.log(index);
+        start = prev;
         break;
       }
     }
-    start = timesList[index].dayStart;
+    start = time;
   }
-  return { start, currentHour, currentMinute, currentSecond };
+  return { start, current };
 };
 
 const calcGameTime = (timesList) => {
-  let times = findDayStartFloor(timesList);
-  let startHour = times.start.hour;
-  let startMinute = times.start.minute;
-  let startSecond = times.start.second;
-  let currentHour = times.currentHour;
-  let currentMinute = times.currentMinute;
-  console.log(times);
+  let { start, current } = findDayStartFloor(timesList);
+  let diffSeconds = 0;
+  //1800 sec in 30 min
+  //3600 sec in 60 min
+  // 5400 sec in 90 min
+  if (start.hour < current.hour) {
+    diffSeconds +=
+      (60 - start.minute) * 60 +
+      current.minute * 60 +
+      (60 - start.second + current.second);
+  }
+
+  console.log("current: ", current);
+  console.log("start: ", start);
+  console.log("difference: ", diffSeconds);
 };
 
 calcGameTime(timesList);

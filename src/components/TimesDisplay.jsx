@@ -3,7 +3,7 @@ import { populateTimesDisplay } from "../actions/populateTimesDisplay";
 import "../css/TimesDisplay.css"
 
 export default function TimesDisplay(props) {
-  let timesList = populateTimesDisplay(props.hourInput, props.minuteInput);
+  let timesList = populateTimesDisplay(props.hourInput, props.minuteInput, 0);
   console.log(timesList)
   return (
     <div className="display_wrapper">

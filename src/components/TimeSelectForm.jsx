@@ -2,7 +2,7 @@ import { makeDropDown } from "../actions/makeDropDown";
 
 export default function TimeSelectForm(props) {
   const hourList = makeDropDown(1, 12);
-  const minuteList = makeDropDown(0, 60);
+  const minuteList = makeDropDown(0, 59);
   
   return (
     <div>
