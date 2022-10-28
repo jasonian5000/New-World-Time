@@ -6,80 +6,96 @@ let timesList = [
     dayStart: {
       hour: 6,
       minute: 44,
+      second: 00,
     },
     nightStart: {
       hour: 7,
       minute: 44,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 8,
       minute: 14,
+      second: 00,
     },
     nightStart: {
       hour: 9,
       minute: 14,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 9,
       minute: 44,
+      second: 00,
     },
     nightStart: {
       hour: 10,
       minute: 44,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 11,
       minute: 14,
+      second: 00,
     },
     nightStart: {
       hour: 12,
       minute: 14,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 12,
       minute: 44,
+      second: 00,
     },
     nightStart: {
       hour: 1,
       minute: 44,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 2,
       minute: 14,
+      second: 00,
     },
     nightStart: {
       hour: 3,
       minute: 14,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 3,
       minute: 44,
+      second: 00,
     },
     nightStart: {
       hour: 4,
       minute: 44,
+      second: 00,
     },
   },
   {
     dayStart: {
       hour: 5,
       minute: 14,
+      second: 00,
     },
     nightStart: {
       hour: 6,
       minute: 14,
+      second: 00,
     },
   },
 ];
@@ -91,6 +107,7 @@ const findDayStartFloor = (timesList) => {
     currentHour -= 12;
   }
   let currentMinute = now.getMinutes();
+  let currentSecond = now.getSeconds()
   let start = {};
   for (let index = 0; index < timesList.length; index++) {
     if (
@@ -110,17 +127,19 @@ const findDayStartFloor = (timesList) => {
         break;
       }
     }
-    start = timesList[index].dayStart
+    start = timesList[index].dayStart;
   }
-  return start
+  return { start, currentHour, currentMinute, currentSecond };
 };
 
 const calcGameTime = (timesList) => {
-    let dayStart = findDayStartFloor(timesList)
-    let startHour = dayStart.hour
-    let startMinute = dayStart.minute
-    
-    console.log(dayStart)
-}
+  let times = findDayStartFloor(timesList);
+  let startHour = times.start.hour;
+  let startMinute = times.start.minute;
+  let startSecond = times.start.second;
+  let currentHour = times.currentHour;
+  let currentMinute = times.currentMinute;
+  console.log(times);
+};
 
 calcGameTime(timesList);
