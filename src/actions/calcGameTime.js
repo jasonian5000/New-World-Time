@@ -83,8 +83,27 @@ let timesList = [
     },
   },
 ];
-let currentHour = 6
-let currentMinute = 32
-export const calcGameTime = (currentHour, currentMinute, timesList) => {
 
-}
+const calcGameTime = (timesList) => {
+  let dt = new Date();
+  let currentHour = dt.getHours();
+  if (currentHour > 12) {
+    currentHour -= 12;
+  }
+  let currentMinute = dt.getMinutes();
+  let start = {}
+  for (let index = 0; index < timesList.length; index++) {
+    if (timesList[index].dayStart.hour === currentHour && timesList[index].dayStart.minute <= currentMinute) {
+        start = timesList[index].dayStart
+        break
+    }
+    if (timesList[index].dayStart.hour > currentHour && timesList[index-1].dayStart.hour < currentHour) {
+        start = timesList[index].dayStart
+        console.log(index)
+        break
+    }
+  }
+  console.log(start)
+};
+
+calcGameTime(timesList);
