@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/New-World-Time/static/css/main.e7df85a2.css",
-    "main.js": "/New-World-Time/static/js/main.f6c379c8.js",
+    "main.css": "/New-World-Time/static/css/main.a133dccc.css",
+    "main.js": "/New-World-Time/static/js/main.dd2d94d4.js",
+    "static/media/logo.png": "/New-World-Time/static/media/logo.bf2fe0f41f67436d9bab.png",
     "index.html": "/New-World-Time/index.html",
-    "main.e7df85a2.css.map": "/New-World-Time/static/css/main.e7df85a2.css.map",
-    "main.f6c379c8.js.map": "/New-World-Time/static/js/main.f6c379c8.js.map"
+    "main.a133dccc.css.map": "/New-World-Time/static/css/main.a133dccc.css.map",
+    "main.dd2d94d4.js.map": "/New-World-Time/static/js/main.dd2d94d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7df85a2.css",
-    "static/js/main.f6c379c8.js"
+    "static/css/main.a133dccc.css",
+    "static/js/main.dd2d94d4.js"
   ]
 }
