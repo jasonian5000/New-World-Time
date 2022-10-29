@@ -1,13 +1,15 @@
 .display_wrapper {
     width: 100vw;
     display: flex;
-    align-content: center;
+    justify-content: center;
 }
 
 .display_columns {
     display: flex;
+    width: 50vw;
+    justify-content: space-around;
 }
 
-.day_column, .night_column {
+/* .day_column, .night_column {
     width: 50vw;
-}
+} */
