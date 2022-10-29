@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { createTimesList } from "../actions/createTimesList";
+import DonateButton from "./DonateButton";
 import GameClock from "./GameClock";
 import TimesDisplay from "./TimesDisplay";
 import TimeSelectForm from "./TimeSelectForm";
@@ -30,6 +31,7 @@ export default function Homepage() {
       <TimeSelectForm timeSelections={timeSelections} />
       <GameClock timesList={timesList} />
       <TimesDisplay timesList={timesList} />
+      <DonateButton/>
     </div>
   );
 }

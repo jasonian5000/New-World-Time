@@ -12,7 +12,6 @@ const findDayStartFloor = (timesList) => {
   for (let index = 0; index < timesList.length; index++) {
     let time = timesList[index].dayStart;
     let prev = timesList[index - 1]?.dayStart;
-    // console.log(current, time, prev)
     if (time.hour === current.hour && time.minute <= current.minute) {
       start = time;
       break;
@@ -38,13 +37,13 @@ const calcDiffSeconds = (timesList) => {
     diffSeconds +=
       (current.minute - start.minute) * 60 + (current.second - start.second);
   }
-  if (start.hour < current.hour) {
+  if ((start.hour < current.hour) || (start.hour === 12)) {
     diffSeconds +=
       (59 - start.minute) * 60 +
       current.minute * 60 +
       (60 - start.second + current.second);
   }
-  if (current.hour - start.hour === 2) {
+  if (current.hour - start.hour === 2 || current.hour - start.hour === -10) {
     diffSeconds += 60 * 60;
   }
   return diffSeconds;

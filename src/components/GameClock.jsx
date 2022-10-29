@@ -15,6 +15,8 @@ export default function GameClock(props) {
   return (
     <div>
       <h1>In-Game Clock</h1>
+      <p>Sunrise:</p>
+      <p>7:00-7:45 AM</p>
       <h1>
         {gameTime.gameHours}:
         {gameTime.gameMinutes.toLocaleString("en-US", {
@@ -26,9 +28,8 @@ export default function GameClock(props) {
         })}{" "}
         {gameTime.dayNight}
       </h1>
-      <p>Day is 7:00 AM to 7:00 PM</p>
-      <p>Dawn is 7:00 AM to 7:45 AM</p>
-      <p>Dusk is 6:15 PM to 7:00 PM</p>
+      <p>Sunset:</p>
+      <p>6:15-7:00 PM</p>
     </div>
   );
 }
