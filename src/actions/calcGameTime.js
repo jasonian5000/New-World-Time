@@ -12,6 +12,7 @@ const findDayStartFloor = (timesList) => {
   for (let index = 0; index < timesList.length; index++) {
     let time = timesList[index].dayStart;
     let prev = timesList[index - 1]?.dayStart;
+    // console.log(current, time, prev)
     if (time.hour === current.hour && time.minute <= current.minute) {
       start = time;
       break;
@@ -19,7 +20,7 @@ const findDayStartFloor = (timesList) => {
     if (prev) {
       if (
         (time.hour > current.hour && prev.hour < current.hour) ||
-        (time.hour === current.hour && time.minute > current.minute)
+        (time.hour === current.hour && time.minute > current.minute) || (time.hour > current.hour && prev.hour === 12)
       ) {
         start = prev;
         break;
@@ -68,7 +69,7 @@ export const calcGameTime = (timesList) => {
     gameHours = 12;
   }
   if (gameHours > 24) {
-    gameHours -= 24
+    gameHours -= 24;
   }
   if (gameHours > 12) {
     gameHours -= 12;
