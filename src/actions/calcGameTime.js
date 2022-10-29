@@ -50,7 +50,6 @@ const calcDiffSeconds = (timesList) => {
 };
 export const calcGameTime = (timesList) => {
   let diffSeconds = calcDiffSeconds(timesList);
-  console.log(diffSeconds);
   let gameTime = 60 * 60 * 7;
   let dayNight = "AM";
   if (diffSeconds <= 60 * 60) {
