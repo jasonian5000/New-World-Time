@@ -1,8 +1,9 @@
 import React from 'react'
+import "../css/DonateButton.css"
 
 export default function DonateButton() {
   return (
-    <div>
+    <div className='button_wrapper'>
       <form action="https://www.paypal.com/donate" method="post" target="_top">
         <input type="hidden" name="business" value="H3V7DB38GCDZQ" />
         <input type="hidden" name="no_recurring" value="1" />

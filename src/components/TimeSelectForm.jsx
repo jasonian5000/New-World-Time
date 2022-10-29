@@ -1,4 +1,5 @@
 import { makeDropDown } from "../actions/makeDropDown";
+import "../css/TimeSelectForm.css"
 
 export default function TimeSelectForm(props) {
   const hourList = makeDropDown(1, 12);
@@ -15,10 +16,10 @@ export default function TimeSelectForm(props) {
 
   return (
     <div>
-      <h1>New World Clock</h1>
       <h3>Select the start of day:</h3>
       <form>
         <select
+          className="dropdown_select"
           name="hour"
           value={hourInput}
           onChange={(e) => {
@@ -27,12 +28,14 @@ export default function TimeSelectForm(props) {
           }}
         >
           {hourList.map((hour) => (
-            <option value={hour.value} key={hour.value}>
+            <option
+            className="dropdown_item" value={hour.value} key={hour.value}>
               {hour.value}
             </option>
           ))}
         </select>
         <select
+          className="dropdown_select"
           name="minute"
           value={minuteInput}
           onChange={(e) => {
@@ -42,6 +45,7 @@ export default function TimeSelectForm(props) {
         >
           {minuteList.map((minute) => (
             <option
+            className="dropdown_item"
               value={minute.value.toLocaleString("en-US", {
                 minimumIntegerDigits: 2,
               })}
@@ -54,6 +58,7 @@ export default function TimeSelectForm(props) {
           ))}
         </select>
         <select
+          className="dropdown_select"
           name="second"
           value={secondInput}
           onChange={(e) => {
@@ -63,6 +68,7 @@ export default function TimeSelectForm(props) {
         >
           {secondList.map((second) => (
             <option
+            className="dropdown_item"
               value={second.value.toLocaleString("en-US", {
                 minimumIntegerDigits: 2,
               })}
