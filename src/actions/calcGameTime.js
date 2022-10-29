@@ -48,22 +48,31 @@ const calcDiffSeconds = (timesList) => {
   }
   return diffSeconds;
 };
- export const calcGameTime = (timesList) => {
+export const calcGameTime = (timesList) => {
   let diffSeconds = calcDiffSeconds(timesList);
+  console.log(diffSeconds);
   let gameTime = 60 * 60 * 7;
   let dayNight = "AM";
   if (diffSeconds <= 60 * 60) {
     gameTime += diffSeconds * 12;
   } else {
-    gameTime += (diffSeconds - 60 * 60) * 24;
+    gameTime += 60 * 60 * 12 + (diffSeconds - 60 * 60) * 24;
   }
-  if (gameTime >= 60 * 60 * 12) {
+  if (gameTime > 60 * 60 * 12) {
     dayNight = "PM";
-    gameTime -= 60 * 60 * 12;
+  }
+  if (gameTime > 60 * 60 * 24) {
+    dayNight = "AM";
   }
   let gameHours = Math.floor(gameTime / 60 / 60);
-  if (gameHours === 0 ) {
-    gameHours = 12
+  if (gameHours === 0) {
+    gameHours = 12;
+  }
+  if (gameHours > 24) {
+    gameHours -= 24
+  }
+  if (gameHours > 12) {
+    gameHours -= 12;
   }
   let gameMinutes = Math.floor((gameTime / 60) % 60);
   let gameSeconds = Math.floor((gameTime % 60) % 60);

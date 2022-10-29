@@ -26,6 +26,9 @@ export default function GameClock(props) {
         })}{" "}
         {gameTime.dayNight}
       </h1>
+      <p>Day is 7:00 AM to 7:00 PM</p>
+      <p>Dawn is 7:00 AM to 7:45 AM</p>
+      <p>Dusk is 6:15 PM to 7:00 PM</p>
     </div>
   );
 }
