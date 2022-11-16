@@ -14,8 +14,10 @@ export default function Homepage() {
   const [secondInput, setSecondInput] = useState(
     localStorage.getItem("second")
   );
-  const [timesList, setTimesList] = useState(createTimesList(hourInput, minuteInput, secondInput));
-  let timeSelections = {
+  const [timesList, setTimesList] = useState(
+    createTimesList(hourInput, minuteInput, secondInput)
+  );
+  let props = {
     hourInput,
     setHourInput,
     minuteInput,
@@ -25,13 +27,13 @@ export default function Homepage() {
   };
   useEffect(() => {
     setTimesList(createTimesList(hourInput, minuteInput, secondInput));
-  }, [hourInput, minuteInput, secondInput])
+  }, [hourInput, minuteInput, secondInput]);
   return (
     <div>
-      <TimeSelectForm timeSelections={timeSelections} />
+      <TimeSelectForm props={props} />
       <GameClock timesList={timesList} />
       <TimesDisplay timesList={timesList} />
-      <DonateButton/>
+      <DonateButton />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { makeDropDown } from "../actions/makeDropDown";
-import "../css/TimeSelectForm.css"
+import "../css/TimeSelectForm.css";
 
 export default function TimeSelectForm(props) {
   const hourList = makeDropDown(1, 12);
@@ -12,7 +12,7 @@ export default function TimeSelectForm(props) {
     setMinuteInput,
     secondInput,
     setSecondInput,
-  } = props.timeSelections;
+  } = props.props;
 
   return (
     <div>
@@ -29,7 +29,10 @@ export default function TimeSelectForm(props) {
         >
           {hourList.map((hour) => (
             <option
-            className="dropdown_item" value={hour.value} key={hour.value}>
+              className="dropdown_item"
+              value={hour.value}
+              key={hour.value}
+            >
               {hour.value}
             </option>
           ))}
@@ -45,7 +48,7 @@ export default function TimeSelectForm(props) {
         >
           {minuteList.map((minute) => (
             <option
-            className="dropdown_item"
+              className="dropdown_item"
               value={minute.value.toLocaleString("en-US", {
                 minimumIntegerDigits: 2,
               })}
@@ -68,7 +71,7 @@ export default function TimeSelectForm(props) {
         >
           {secondList.map((second) => (
             <option
-            className="dropdown_item"
+              className="dropdown_item"
               value={second.value.toLocaleString("en-US", {
                 minimumIntegerDigits: 2,
               })}
